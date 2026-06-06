@@ -1,0 +1,21 @@
+{
+  "name": "Axezent AI Software Safe",
+  "version": "v1",
+  "description": "Deterministic policy pack for AI coding-agent receipts.",
+  "allow_network_access": false,
+  "tests_required": true,
+  "forbidden_path_prefixes": [
+    ".env",
+    ".ssh/",
+    "secrets/",
+    "private_keys/",
+    "credentials/"
+  ],
+  "allowed_step_kinds": [
+    "file_read",
+    "file_write",
+    "test_run",
+    "final_answer"
+  ],
+  "required_final_claimed_result": "ACCEPT"
+}

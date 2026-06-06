@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axezent.ai/schemas/axezent_ai_ctr_receipt_v1.schema.json",
+  "title": "Axezent AI CTR Receipt v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "receipt_id",
+    "truth_label",
+    "agent",
+    "task",
+    "policy_pack",
+    "trace_steps",
+    "final_answer",
+    "checker_expectation"
+  ],
+  "properties": {
+    "schema": { "const": "AXEZENT-AI-CTR-RECEIPT-v1" },
+    "receipt_id": { "type": "string", "minLength": 1 },
+    "truth_label": { "const": "BOUNDED_AI_TRACE_POLICY_CHECK" },
+    "agent": {
+      "type": "object",
+      "required": ["name", "model", "run_id"],
+      "properties": {
+        "name": { "type": "string" },
+        "model": { "type": "string" },
+        "run_id": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "task": {
+      "type": "object",
+      "required": ["task_id", "declared_goal", "allowed_write_paths"],
+      "properties": {
+        "task_id": { "type": "string" },
+        "declared_goal": { "type": "string" },
+        "risk_level": { "type": "string" },
+        "allowed_write_paths": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "policy_pack": {
+      "type": "object",
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "trace_steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["step_id", "kind"],
+        "properties": {
+          "step_id": { "type": "integer", "minimum": 1 },
+          "kind": { "type": "string" },
+          "target": { "type": "string" },
+          "command": { "type": "string" },
+          "exit_code": { "type": "integer" },
+          "sha256": { "type": "string" },
+          "before_sha256": { "type": "string" },
+          "after_sha256": { "type": "string" },
+          "diff_sha256": { "type": "string" },
+          "stdout_sha256": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "final_answer": {
+      "type": "object",
+      "required": ["claimed_result", "summary"],
+      "properties": {
+        "claimed_result": { "type": "string" },
+        "summary": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "checker_expectation": {
+      "type": "object",
+      "required": ["expected_result"],
+      "properties": {
+        "expected_result": { "enum": ["ACCEPT", "REJECT", "INCOMPLETE"] }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

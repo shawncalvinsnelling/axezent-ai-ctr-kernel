@@ -1,0 +1,14 @@
+[package]
+name = "axezent-ctr-runtime"
+version = "1.0.0"
+edition = "2021"
+description = "Axezent AI CTR streaming runtime scaffold"
+license = "MIT"
+
+[lib]
+name = "axezent_ctr_runtime"
+path = "lib.rs"
+
+[[bin]]
+name = "axezent-ctr-runtime"
+path = "main.rs"

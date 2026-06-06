@@ -1,0 +1,8 @@
+{
+  "name": "Axezent AI Citation Required",
+  "version": "v1",
+  "description": "Policy stub for outputs that must attach evidence hashes and source references.",
+  "requires_evidence_hashes": true,
+  "requires_citations": true,
+  "allow_network_access": false
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Axezent AI Data Privacy",
+  "version": "v1",
+  "description": "Policy stub for avoiding sensitive path access and undeclared data movement.",
+  "forbidden_path_prefixes": [
+    ".env",
+    ".ssh/",
+    "secrets/",
+    "private_keys/",
+    "credentials/",
+    "customer_data/"
+  ],
+  "allow_network_access": false
+}
